@@ -1,26 +1,23 @@
 let todoItems = [];
 
-function renderTodo(todo, date) {
+function renderTodo(todo) {
     const table = document.getElementById("todo-table");
     const row = table.insertRow(-1);
+    // for text todo item
     const textCell = row.insertCell(0);
     textCell.innerText = todo.text;
-
-    const textDate = row.insertCell(1);
-    textDate.innerText = date.text;
+    // for date item
+    const dateCell = row.insertCell(1);
+    dateCell.innerText = todo.date;
   }
 
 function addTodo() {
   const todoText = document.getElementById("todo-id").value;
   const todo = {
-    text: todoText
+    text: todoText,
+    date: new Date().toLocaleString("en-IE"),
   };
-  const getCurrentDate = new Date(Date.now());
-  const date = {
-    text: getCurrentDate.toLocaleString()
-  };
-  todoItems.push(todo, date);
-  renderTodo(todo, date);
+  todoItems.push(todo);
+  renderTodo(todo);
 
-  console.log(date);
 }
