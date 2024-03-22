@@ -67,6 +67,7 @@ function AddToDone(todoObject) {
   renderDone(todoObject);
 }
 
+// to render the done table
 function renderDone(done) {
   const table = document.getElementById("done-table");
   const row = table.insertRow(-1);
