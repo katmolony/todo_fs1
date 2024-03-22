@@ -1,4 +1,5 @@
 let todoItems = [];
+let doneItems = [];
 
 // function to create a unique id
 function uuidv4() {
@@ -48,8 +49,31 @@ function deleteAllTodos() {
 }
 
 function deleteTodo(id) {
+  // get done item
+  const doneItem = todoItems.find((todo) => todo.id == id);
+  //console.log(doneItem);
+  AddToDone(doneItem);
+  
   deleteAllTodos();
   const found = todoItems.findIndex((todo) => todo.id == id);
   todoItems.splice(found, 1);
   renderAllTodos();
+}
+
+function AddToDone(todoObject) {
+  console.log(todoObject);
+  doneItems.push(todoObject);
+  console.log("pushed to array", todoObject);
+  renderDone(todoObject);
+}
+
+function renderDone(done) {
+  const table = document.getElementById("done-table");
+  const row = table.insertRow(-1);
+  // for text done item
+  const textCell = row.insertCell(0);
+  textCell.innerText = done.text;
+  // for date item
+  const dateCell = row.insertCell(1);
+  dateCell.innerText = done.date;
 }
