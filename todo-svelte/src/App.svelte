@@ -28,7 +28,7 @@
 </script>
 
 <div class="container">
-  <Title />
+  <Title title="Simple Todo List" subTitle="Fun Things to do"/>
   <div class="section box">
     <div class="field is-horizontal">
       <div class="field-label is-normal">
