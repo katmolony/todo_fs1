@@ -1,6 +1,7 @@
 <script>
   import Title from "./Title.svelte";
   import { v4 as uuidv4 } from "uuid";
+  import TodoList from "./TodoList.svelte";
 
   let todoText = "";
   let todoItems = [];
@@ -28,7 +29,7 @@
 </script>
 
 <div class="container">
-  <Title title="Simple Todo List" subTitle="Fun Things to do"/>
+  <Title title="Simple Todo List" subTitle="Fun Things to do" />
   <div class="section box">
     <div class="field is-horizontal">
       <div class="field-label is-normal">
@@ -50,24 +51,6 @@
       </div>
     </div>
   </div>
-  <div class="section box">
-    <div class="title is-6">Things yet do</div>
-    <table class="table is-fullwidth">
-      <thead>
-        <th>Task</th>
-        <th>Date</th>
-        <th></th>
-      </thead>
-      <tbody>
-        {#each todoItems as todo}
-          <tr>
-            <td> {todo.text} </td>
-            <td> {todo.date} </td>
-            <button on:click={deleteTodo(todo.id)} class="button">delete</button
-            >
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+  <TodoList caption="Items Todo" items={todoItems} />
+  <TodoList caption="Items Done" items={doneItems} />
 </div>
