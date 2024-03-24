@@ -1,6 +1,7 @@
 <script>
     export let caption;
-    export let items = [];
+    export let items = []; 
+    export let deleteSupport = false;
   </script>
   
   <div class="section box">
@@ -16,6 +17,9 @@
           <tr>
             <td> {todo.text} </td>
             <td> {todo.date}</td>
+            {#if deleteSupport}
+            <button class="button">Delete</button>
+            {/if}
           </tr>
         {/each}
       </tbody>
