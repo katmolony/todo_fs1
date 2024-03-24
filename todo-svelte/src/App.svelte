@@ -1,17 +1,18 @@
 <script>
-  import Title from "./Title.svelte";
-  import { v4 as uuidv4 } from "uuid";
+  import Title from "./Title.svelte"
+  import AddTodoForm from "./AddTodoForm.svelte";
   import TodoList from "./TodoList.svelte";
+  import { v4 as uuidv4 } from 'uuid';
 
   let todoText = "";
   let todoItems = [];
   let doneItems = [];
 
-  function addTodo() {
+  function addTodo(todoText) {
     const todo = {
       text: todoText,
       date: new Date().toLocaleString("en-IE"),
-      id: uuidv4(),
+      id: uuidv4()
     };
     todoItems.push(todo);
     todoItems = [...todoItems];
@@ -29,28 +30,10 @@
 </script>
 
 <div class="container">
-  <Title title="Simple Todo List" subTitle="Fun Things to do" />
+  <Title title="Simple Todo List" subTitle="Fun Things to do"/>
   <div class="section box">
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label for="todo" class="label">What should I do?</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input
-              bind:value={todoText}
-              id="todo"
-              class="input"
-              type="text"
-              placeholder="Type something..."
-            />
-          </p>
-        </div>
-        <button on:click={addTodo} class="button">Add Todo</button>
-      </div>
-    </div>
+    <AddTodoForm addTodo="{addTodo}" />
   </div>
   <TodoList caption="Items Todo" items="{todoItems}" deleteHandler="{deleteTodo}"/>
-  <TodoList caption="Items Done" items="{doneItems}" />
+  <TodoList caption="Items Done" items="{doneItems}"/>
 </div>
