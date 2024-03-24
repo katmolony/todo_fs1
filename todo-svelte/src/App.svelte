@@ -1,4 +1,5 @@
 <script>
+  import Title from "./Title.svelte";
   import { v4 as uuidv4 } from "uuid";
 
   let todoText = "";
@@ -27,10 +28,7 @@
 </script>
 
 <div class="container">
-  <div class="box has-text-centered">
-    <div class="title">Simple Todo List</div>
-    <div class="subtitle">Fun things to do</div>
-  </div>
+  <Title />
   <div class="section box">
     <div class="field is-horizontal">
       <div class="field-label is-normal">
